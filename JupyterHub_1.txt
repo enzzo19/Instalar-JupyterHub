@@ -1,0 +1,158 @@
+Recomiendo usar Ubuntu 20.04 LTS como OS de administracion o como alternativa PuTTY en Windows:
+	* https://docs.microsoft.com/es-es/windows/wsl/install
+	* https://www.putty.org/
+
+Conectar con el servidor desde Putty:
+	* https://www.hostinger.es/tutoriales/conectar-usando-terminal-putty-ssh/
+
+Configurar servidor de Hostinger:
+	* https://www.hostinger.com.ar/tutoriales/configurar-servidor-vps/
+
+Para gestion de memoria de la consola de administracion:
+	* $ free -h
+	* $ htop -s PERCENT_MEM
+
+Actualizar OS Ubuntu local y desde el server:
+	* sudo apt update
+	* sudo apt upgrade
+	* sudo reboot
+
+Para generar claves ssh desde Ubuntu:
+	* $ ssh-keygen -t rsa (Para clave normal ssh 2048)
+	* $ ssh-keygen -t rsa -b 4096 (Para una llave más segura de 4096-bit)
+	* $ cat ~/.ssh/id_rsa.pub (Para ver la clave en un formato legible)
+
+Despues de terminar de instalar el JupyterHub en LOCAL correr:
+	* $ pip install nbclassic==0.3.7
+esto deberia salvar el error de spawn que no logue el usuario despues de 30 segundos.
+Para conectar desde local a tu servidor con ssh:
+	* $  ssh root@<ip-tu-server>
+
+Usuario admin server JupyterHub: enzzo19
+Crear un nuevo usuario como admin y entrar desde ahi:
+Crear usuario:
+	* $ adduser <nombre_nuevo>
+	* poner contraseña 2 veces
+Para cerrar la conexion del server:
+	* $ logout
+Para copiar las claves ssh en el nuevo usuario:
+	* $ ssh-copy-id <tu_nombre_usuario>@<tu_ip_server>
+	* poner la contraseña
+Para poner el usuario creado como superusuario:
+	* $ usermod <tu-nombre-usuario> -G sudo
+Saltar a ese nuevo superusuario:
+	* $ su <tu-nombre-usuario>
+Para probar que funcione:
+	* $ sudo ls /
+	* solo deberia pedir la contraseña y mostrar la estructura de directorios
+Salir de ese superusuario y regresar a root:
+	* $ exit
+Buscar el archivo para editar:
+	* $ vim /etc/ssh/sshd_config
+	Para no permitir el acceso root:
+		* PermitRootLoogin <no>(cambiar)
+	Para no permitir el acceso por contraseña
+		* PasswordAutenticator <no>(cambiar)
+Para guardar los cambios en el sistema:
+	* $ systemctl restart ssh
+Para salir del usuario root:
+	* $ logout
+-- En este punto no deberias poder acceder como usuario root ni tampoco acceder a otro usuario con contraseña  a tu sevidor --
+
+Para iniciar sesion con el usuario creado como root solo coloca:
+	* $ ssh <nombre_usuario-creado>@<ip-server>
+
+Tutorial de VIM:
+	* https://victorhckinthefreeworld.com/2017/06/14/como-salir-del-editor-vim/
+
+
+Usuario admin creado server: enzzo19
+Password admin creado: enzo159753852147aA#
+----Desde aqui empieza la instalacion de JupyterHub en tu servidor--
+
+Si estas en este punto puede probar de crer un archivo con: 
+	* $ touch HOLA
+	* $ ls 
+Intenta levantar un servidor de python el puerto 80 (puerto por defecto para protocolo http):
+	* $ sudo python3 - m http.server 80
+Aqui pueden suceder 2 cosas, una es que tu servicio de VPS tenga liberado los puertos y te levante el servdior de python, la otra es que este ocupado ese puerto y debas matar el prceso corriendo ahi y recien comenzar la instalacion SI PASA LO SEGUNDO seguir por aqui:
+Listar los puertos:
+	* $ sudo netstat -tupln
+Aqui buscar el puerto 80 y el numero de PID que tiene luego matarlo con:
+	* $ sudo kill -<numero-PID-proceso> PID
+luego intenta levantar el servidor de python ahi nuevamente:
+	* $ sudo python3 - m http.server 80
+-------Ahora si a instalar------
+Instalar las librerias a utilizar:
+	* $ sudo apt install python3 python3-dev git curl
+Si no nos deja utilizar las librerias puede ser que cortamos el servicio http para instalacion de librerias entonces:
+Instalamos un configurador de Firewall
+	* $ sudo apt install ufw
+Luego vamos a ver el estado:
+	* $ sudo ufw status
+si esta deshabilitado lo cambiamos con:
+	* $ sudo ufw enable
+Luego habilitamos la conexion http:
+	* $ sudo uf allow http
+Finalmente desactiva el acceso al Firewall ya que esto bloquea el acceso ssh:
+	* $ sudo ufw disable
+Si todo salio bien deberiamos ahora si poder cargar las librerias con el mismo comando:
+	* $ sudo apt install python3 python3-dev git curl
+Puede servir redirigir el trafico del puerto 80 a uno habilitado por nosotros como le 8080:
+	* $ sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
+
+Fuente: https://www.enmimaquinafunciona.com/pregunta/150152/abrir-el-puerto-80-en-ubuntu-aws
+Luego levantamos el JupyterHub con:
+	* $ curl -L https://tljh.jupyter.org/bootstrap.py | sudo -E python3 - --admin <admin-user-name>
+
+---Colocar un dominio y habilitar HTTPS desde la customizacion ----
+Para habilitar el trafico https:
+	* $ sudo tljh-config set https.enabled true
+Para agregar un correo:
+	* $ sudo tljh-config set https.letsencrypt.email <you@example.com>
+Para agregar su dominio
+	* $ sudo tljh-config add-item https.letsencrypt.domains <yourhub.yourdomain.edu>
+
+Ver los logs de traefik y de jupyterhub:
+	* $ sudo journalctl -u traefik
+	* $ sudo journalctl -u jupyterhub
+muy util cuando algo no salio bien al finalizar la instalacion.
+
+
+--------ENLANCES UTILES-----------
+
+Guia de Instalacion:
+	* https://jupyterhub.readthedocs.io/en/stable/installation-guide.html
+
+Guia de Instalacion en tu propio servidor:
+	*  https://tljh.jupyter.org/en/latest/install/custom-server.html
+
+Matar proceso en un puerto especifico:
+	* https://www.enmimaquinafunciona.com/pregunta/86326/linux-matar-proceso-en-un-puerto-especifico
+
+Configurar Firewall:
+	* https://computernewage.com/2014/08/10/como-configurar-el-firewall-ufw-en-ubuntu/
+
+Install in custom server:
+	* https://tljh.jupyter.org/en/latest/install/custom-server.html
+
+Conocer la ip de tu servidor: 
+ 	* $ curl ifconfig.me/all
+
+Añadir a URL to run HupyterHub por https:
+	* https://tljh.jupyter.org/en/latest/howto/admin/https.html#howto-admin-https
+
+Si no carga en web
+	* https://github.com/jupyterhub/the-littlest-jupyterhub/issues/438
+
+Habilitar las extensiones:
+	* https://tljh.jupyter.org/en/latest/howto/admin/enable-extensions.html
+
+Customizar el tema en jupyter notebooks:
+	* https://towardsdatascience.com/customize-your-jupyter-notebook-theme-in-2-lines-of-code-fc726cea1513#:~:text=By%20default%2C%20Jupyter%20Notebook%20uses,the%20theme%20of%20the%20notebook.
+
+Compartir archivos para todos los usuarios:
+	* https://jupyterhub.github.io/nbgitpuller/link
+
+Extension para Chrome de nbgitpuller:
+	* https://github.com/yuvipanda/nbgitpuller-link-generator-webextension#on-google-chrome--chromium
