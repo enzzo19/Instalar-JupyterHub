@@ -34,7 +34,9 @@ Podemos dividir la Instalacion en Diferentes Pasos:
 * Donde `<username>` es el usuario con el que vamos a acceder a nuestro VPS. Esta por ser nuestra primera vez el `<username>` va a ser `root`
 * Donde `<ip-address or hostname>` sera la ip publica que nos asigno Hostinger para poder acceder a nuestra VPS.
 * La primera vez que nos conectemos nos pedira contraseña, es la que escojiste a la hora de configurara tu VPS como se ve en la imagen.
-  ![conectar vps](source/conectar_vps.png)
+
+![conectar vps](source/conectar_vps.png)
+
 * Como podras ver la linea de comandos cambia a color blanco para diferenciarla de la de wsl.
 
 1. Una vez dentro de tu VPS puedes actalizarlo con los siguientes comandos:
