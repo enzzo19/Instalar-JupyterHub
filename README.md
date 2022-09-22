@@ -34,7 +34,7 @@ Podemos dividir la Instalacion en Diferentes Pasos:
 * Donde `<username>` es el usuario con el que vamos a acceder a nuestro VPS. Esta por ser nuestra primera vez el `<username>` va a ser `root`
 * Donde `<ip-address or hostname>` sera la ip publica que nos asigno Hostinger para poder acceder a nuestra VPS.
 * La primera vez que nos conectemos nos pedira contraseña, es la que escojiste a la hora de configurara tu VPS como se ve en la imagen.
-  ![conectar vps](https://github.com/enzzo19/Instalar-JupyterHub/blob/master/source/conectar_vps.png)
+  ![conectar vps](source/conectar_vps.png)
 * Como podras ver la linea de comandos cambia a color blanco para diferenciarla de la de wsl.
 
 1. Una vez dentro de tu VPS puedes actalizarlo con los siguientes comandos:
@@ -50,7 +50,7 @@ Podemos dividir la Instalacion en Diferentes Pasos:
 
   `$ ssh-keygen -t rsa`
 
-![generar clave ssh](https://github.com/enzzo19/Instalar-JupyterHub/blob/master/source/generar_clave_ssh.png)
+![generar clave ssh](source/generar_clave_ssh.png)
 
 * Ahora deberemos ponerla en un formato para que podamos añadirla a nuestro VPS con el comando:
 
@@ -69,7 +69,7 @@ Podemos dividir la Instalacion en Diferentes Pasos:
 
 * Una vez agregada tu clave ssh ya no te va a pedir ingresar con contraseña, simplemente ingresara al correr el comando: `$ ssh <root>@<ip-address>`
 
-5. Vamos a crear un usuario con permisos de administrador para luego restingir el acceso como root a nuestro VPS.
+1. Vamos a crear un usuario con permisos de administrador para luego restingir el acceso como root a nuestro VPS.
 
 * Desde el usuario root de nuestro VPS vamos a correr el comando:
 
