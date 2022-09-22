@@ -308,6 +308,7 @@ Podemos dividir la Instalacion en Diferentes Pasos:
 
 ### 5_ Desafio en el HUB
 
+Link: [DESAFIO](https://tljupyterar.enzzoservertest.online/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fenzzo19%2FMaterial_Taller_SciPy_2022_UNSa&urlpath=tree%2FMaterial_Taller_SciPy_2022_UNSa%2F&branch=master)
 
 
 ### 6_Enlaces Utiles
