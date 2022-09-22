@@ -61,11 +61,11 @@ Podemos dividir la Instalacion en Diferentes Pasos:
 * Ahora solo copiaremos lo que nos entrego ese comando y lo pegaremos en el panel de gestion de claves ssh VPS de Hostinger.
 * Primero haciendo click en el boton:
 
-![agregar clave ssh](source\agregar_clave_ssh_1.png)
+![agregar clave ssh](source/agregar_clave_ssh_1.png)
 
 * Luego ponemos un nombre y pegamos el contenido que copiamos previamente.
 
-![agregar clave ssh](source\agregar_clave_ssh_2.png)
+![agregar clave ssh](source/agregar_clave_ssh_2.png)
 
 * Una vez agregada tu clave ssh ya no te va a pedir ingresar con contraseña, simplemente ingresara al correr el comando: `$ ssh <root>@<ip-address>`
 
@@ -75,7 +75,7 @@ Podemos dividir la Instalacion en Diferentes Pasos:
 
   `$ adduser <nombre_nuevo>`
 
-![add usser](source\add_usser.png)
+![add usser](source/add_usser.png)
 
 * Luego de correr el comando nos pedira colocar 2 veces la contraseña para este nuevo usuario que creamos.
 * Nos pedira tambien un poco de informacion adicional, que pueden saltar simplemente dando en Enter.
@@ -83,7 +83,7 @@ Podemos dividir la Instalacion en Diferentes Pasos:
 * Vamos a copiar las claves de acceso ssh a este nuevo usuario corriendo el comando:
   `$ ssh-copy-id <tu_nombre_usuario_nuevo>@<tu_ip_server>`
 
-![add clave ssh new usser](source\agregar_clave_ssh_new_usser.png)
+![add clave ssh new usser](source/agregar_clave_ssh_new_usser.png)
 
 * Mos pedira la contraseña que elegimos para este nuevo usuario.
 
@@ -103,7 +103,7 @@ Podemos dividir la Instalacion en Diferentes Pasos:
 
 * Solo deberia pedir la contraseña de este nuevo usuario y mostrar la estructura de directorios.
 
-![new usser as sudo](source\new_usser_as_sudo.png)
+![new usser as sudo](source/new_usser_as_sudo.png)
 
 * Salir de ese superusuario y regresar a root: `$ exit`
 
@@ -132,7 +132,7 @@ Podemos dividir la Instalacion en Diferentes Pasos:
 
 * En este punto no deberias poder acceder como usuario root ni tampoco acceder a otro usuario con contraseña  a tu sevidor como se ve en la imagen.
 
-![security access](source\security_acces.png)
+![security access](source/security_acces.png)
 
 * Entonces ya dejamos un VPS con las configuraciones MINIMAS de seguridad y vamos a acceder a el a travez del comando: 
    `$ ssh <tu_nombre_usuario_nuevo>@<tu_ip_server>`
@@ -149,21 +149,21 @@ Podemos dividir la Instalacion en Diferentes Pasos:
 
 * Desde Hostinger sucede lo segundo ya que si colocamos la direccion ip en nuestro navegador obtenemos:
 
-![kill port vps](source\kill_port_vps.png)
+![kill port vps](source/kill_port_vps.png)
 
 * Entonces vamos a encontrar y matar el proceso para liberar el puerto que necesitamos
 
 * Primero vamos a listar los puertos con el comando:
   * `$ sudo netstat -tupln`
   
-![find port and proccess](source\find_port_and_procces.png)
+![find port and proccess](source/find_port_and_procces.png)
 
 * Aqui buscar el puerto 80 y el numero de PID que tiene luego matarlo con:
   * `$ sudo kill -<numero-PID-proceso> PID`
 
 * Ahora una vez que matamos el proceso corriendo en ese puerto al acceder a la ip desde nuestro navegador deberiamos ver algo como:
   
-![content page after kill](source\content_page_after_kill.png)
+![content page after kill](source/content_page_after_kill.png)
 
 * Y asi exactamente es como la necesitabamos.
 
@@ -178,11 +178,11 @@ Podemos dividir la Instalacion en Diferentes Pasos:
   
   * `$ sudo python3 - m http.server 80`
 
-![step to make python server](source\step_to_make_python_server.png)
+![step to make python server](source/step_to_make_python_server.png)
 
 * Una vez realizados estos pasos podemos volver a acceder a nuestra ip desde el navegador y veremos algo como:
 
-![content of python server](source\content_python_server.png)
+![content of python server](source/content_python_server.png)
 
 * Para detenerlo simplemente apretar laconvinacion de teclas `CTRL + C` en la consola donde se estaba corriendo.
 
@@ -192,7 +192,7 @@ Podemos dividir la Instalacion en Diferentes Pasos:
 
   * `$ sudo apt install python3 python3-dev git curl`
 
-![install package](source\install_package.png)
+![install package](source/install_package.png)
 
 * Copie el texto a continuación y péguelo en la terminal. Reemplace `<admin-user-name>` con el nombre del primer usuario administrador de este JupyterHub. Elija el nombre que desee (¡no olvide quitar los corchetes!).
   `$ curl -L https://tljh.jupyter.org/bootstrap.py | sudo -E python3 - --admin <admin-user-name>`
@@ -200,11 +200,11 @@ Podemos dividir la Instalacion en Diferentes Pasos:
 * ¡Recuerda agregar tu nombre de usuario !
 * Esto puede tardar un poco dependiendo de tu coneccion de red.
 
-![install tljh](source\install_tljh.png)
+![install tljh](source/install_tljh.png)
 
 * Copie la IP pública de su servidor e intente acceder `http://<public-ip>` desde su navegador. Si todo salió bien, esto debería darle una página de inicio de sesión de JupyterHub.
 
-![content tljh web](source\content_tljh_web.png)
+![content tljh web](source/content_tljh_web.png)
 
 * Inicie sesión con el nombre de usuario administrador que utilizó en el paso anterior. Puede elegir cualquier contraseña que desee. Use una contraseña segura y anótela en algún lugar, ya que esta será la contraseña para la cuenta de usuario administrador a partir de ahora.
 
@@ -214,7 +214,7 @@ Podemos dividir la Instalacion en Diferentes Pasos:
 
 1. Primero Vamos a conseguir un dominio para apuntarlo a nuestro servidor, esto tambien lo puden hacer desde Hostinger en [dominio](https://www.hostinger.com.ar/registrar-dominio).
 
-![apuntar dominio](source\apuntar_dominio.png)
+![apuntar dominio](source/apuntar_dominio.png)
 
 * Donde esta tapado por rojo va nuestra direccion ip.
 
@@ -227,13 +227,13 @@ Podemos dividir la Instalacion en Diferentes Pasos:
   
   * Donde `you@example.com` está su dirección de correo electrónico y `yourhub.yourdomain.edu` es el dominio donde se ejecutará su Hub.
 
-![apuntar hub dominio](source\apuntar_hub_dominio.png)
+![apuntar hub dominio](source/apuntar_hub_dominio.png)
 
 * Finalmente, puede volver a cargar el proxy para cargar la nueva configuración con el comando: 
 
    `$ sudo tljh-config reload proxy`
 
-![reload_proxy](source\reload_proxy.png)
+![reload_proxy](source/reload_proxy.png)
 
 * En este punto, el proxy debe negociar con Let's Encrypt para configurar un certificado HTTPS de confianza para usted. El proxy puede tardar un momento en negociar con Let's Encrypt para obtener sus certificados, después de lo cual puede acceder a su Hub de forma segura en `<https://yourhub.yourdomain.edu>`.
 
