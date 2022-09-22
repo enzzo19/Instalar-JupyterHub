@@ -278,4 +278,60 @@ Podemos dividir la Instalacion en Diferentes Pasos:
 * Paso 1: Generar enlace nbgitpuller
   * La forma más rápida de generar un enlace es usar [nbgitpuller.link](https://jupyterhub.github.io/nbgitpuller/link.html), pero existen otras opciones como se describe en la documentación del proyecto [nbgitpuller](https://jupyterhub.github.io/nbgitpuller/use.html). Personalmente recomiendo la forma rapida ya que es muy intuitiva y sencilla de usar.
 
-* 
+* Desde la GUI de la herramienta nos pide:
+  * El enlace donde esta apuntado nuestro Hub.
+  * El enlace del repositorio donde esta el material a distribuir.
+
+![config nbgitpuller](source/config_nbgitpuller.png)
+
+* Una vez cargado esto le podemos poner otros parametros como ser:
+  * La carpeta que queremos que clone
+  * La Rama del repositorio que queremos que clone
+  * Y la aplicaion donde se abrira.
+
+* Finalmente nos entrega como vemos en la imagen recuadrado de azul, un link para compartir a nuestros usuarios dentro del Hub.
+
+* Paso 2: los usuarios hacen clic en el enlace `nbgitpuller`
+
+* Envíe el enlace a sus usuarios de alguna manera: correo electrónico, slack, publique una versión abreviada (quizás con bit.ly) en la pared, o colóquelo en la página de su plan de estudios (como lo hace data8 de UC Berkeley ). Lo que funcione para ti :)
+
+* Cuando los usuarios hagan clic en el enlace, se les pedirá que inicien sesión en el hub si aún no lo han hecho.
+
+* Los usuarios verán una barra de progreso a medida que se recupera el repositorio de git y se realiza cualquier fusión automática requerida.
+
+![pull progress](https://tljh.jupyter.org/en/latest/_images/pull-progress.png)
+
+* Los usuarios ahora serán redirigidos al cuaderno especificado en la URL!
+
+* Este flujo de trabajo permite a los usuarios llegar directamente al cuaderno que especificó sin tener que entender mucho sobre git o la interfaz de JupyterHub.
+
+
+### 5_ Desafio en el HUB
+
+
+
+### 6_Enlaces Utiles
+
+* Guia de Instalacion: (aqui)[https://jupyterhub.readthedocs.io/en/stable/installation-guide.html]
+
+* Guia de Instalacion en tu propio servidor: (aqui)[https://tljh.jupyter.org/en/latest/install/custom-server.html]
+
+* Matar proceso en un puerto especifico: (aqui)[https://www.enmimaquinafunciona.com/pregunta/86326/linux-matar-proceso-en-un-puerto-especifico]
+
+* Configurar Firewall: (aqui) [https://computernewage.com/2014/08/10/como-configurar-el-firewall-ufw-en-ubuntu/]
+
+* Install in custom server: (aqui)[https://tljh.jupyter.org/en/latest/install/custom-server.html]
+
+* Conocer la ip de tu servidor: `$ curl ifconfig.me/all`
+
+* Añadir a URL to run HupyterHub por https: (aqui)[https://tljh.jupyter.org/en/latest/howto/admin/https.html#howto-admin-https]
+
+* Si no carga en web (aqui) [https://github.com/jupyterhub/the-littlest-jupyterhub/issues/438>]
+
+* Habilitar las extensiones: (aqui)[https://tljh.jupyter.org/en/latest/howto/admin/enable-extensions.html]
+
+* Customizar el tema en jupyter notebooks: (aqui)[https://towardsdatascience.com/customize-your-jupyter-notebook-theme-in-2-lines-of-code-fc726cea1513#:~:text=By%20default%2C%20Jupyter%20Notebook%20uses,the%20theme%20of%20the%20notebook].
+
+* Compartir archivos para todos los usuarios: (aqui) [https://jupyterhub.github.io/nbgitpuller/link]
+
+* Extension para Chrome de nbgitpuller: (aqui)[https://github.com/yuvipanda/nbgitpuller-link-generator-webextension#on-google-chrome--chromium]
