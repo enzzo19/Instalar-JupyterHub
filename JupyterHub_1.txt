@@ -66,8 +66,6 @@ Tutorial de VIM:
 	* https://victorhckinthefreeworld.com/2017/06/14/como-salir-del-editor-vim/
 
 
-Usuario admin creado server: enzzo19
-Password admin creado: enzo159753852147aA#
 ----Desde aqui empieza la instalacion de JupyterHub en tu servidor--
 
 Si estas en este punto puede probar de crer un archivo con: 
