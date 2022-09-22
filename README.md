@@ -240,3 +240,42 @@ Podemos dividir la Instalacion en Diferentes Pasos:
 * En este punto, el proxy debe negociar con Let's Encrypt para configurar un certificado HTTPS de confianza para usted. El proxy puede tardar un momento en negociar con Let's Encrypt para obtener sus certificados, después de lo cual puede acceder a su Hub de forma segura en `<https://yourhub.yourdomain.edu>`.
 
 * Estos certificados tienen una validez de 3 meses. El proxy los renovará automáticamente antes de que caduquen.
+
+![hub en el dominio](source/hub_en_el_dominio.png)
+
+* Desde aqui como puedes ver nuestro Hub ya quedo apuntado a nuestro dominio y con los certificados de seguridad correspondientes. Solo debes iniciar sesion con el usuario que creaste unos pasos atras, y si es tu priera vez, la contraseña que coloques sera la que se guarde para ese usuario.
+
+### 4_ Customizar nuestro Hub
+
+1. NBExtensions
+
+* Vamos a instalar una serie de herramientas/extensiones en nuestro Hub que daran soporte y mejoraran sin duda la practicidad del Hub para los usuarios. Estas seran las NB extensions de las cuales puedes encontrar documentacion [aqui](https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/install.html)
+
+* Y sobre como instalarlo en nuestro Hub podemos encontrar documentacion desde [aqui](https://tljh.jupyter.org/en/latest/howto/admin/enable-extensions.html)
+
+* Una vez dentro de nuestro Hub en el navegador vamos a abrir una consola y correremos el comando:
+
+`$ sudo -E pip install jupyter_contrib_nbextensions`
+
+* A continuación, agregue los archivos de estilo de la extensión del cuaderno a los archivos de configuración de Jupyter.
+
+`$ sudo -E jupyter contrib nbextension install --sys-prefix`
+
+* Luego, habilitará las extensiones que le gustaría usar. La sintaxis para esto es seguida por la ruta al archivo principal de la extensión deseada. Por ejemplo, para habilitar el bloc de notas , escribiría lo siguiente: `jupyter nbextension enable`
+
+`$ sudo -E jupyter nbextension enable scratchpad/main --sys-prefix`
+
+* Si quieres saber la utilidad de algunas de estas extensiones puedes buscarlas [aqui](https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/nbextensions.html).
+
+2. Compartir material con NBgitpuller
+
+* Requisitos Previos:
+  * Un JupyterHub configurado con The Littlest JupyterHub.
+  * Un repositorio git que contiene materiales para distribuir.
+
+    * Esto va a ser simplemente crear un repositorio en Github donde se encuentre todo el material que queremos distribuir en nuestra clase. Puedes ver como crear uno desde Github haciendo click [aqui](https://docs.github.com/es/get-started/quickstart/create-a-repo)
+  
+* Paso 1: Generar enlace nbgitpuller
+  * La forma más rápida de generar un enlace es usar [nbgitpuller.link](https://jupyterhub.github.io/nbgitpuller/link.html), pero existen otras opciones como se describe en la documentación del proyecto [nbgitpuller](https://jupyterhub.github.io/nbgitpuller/use.html). Personalmente recomiendo la forma rapida ya que es muy intuitiva y sencilla de usar.
+
+* 
