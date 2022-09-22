@@ -312,26 +312,25 @@ Podemos dividir la Instalacion en Diferentes Pasos:
 
 ### 6_Enlaces Utiles
 
-* Guia de Instalacion: (aqui)[https://jupyterhub.readthedocs.io/en/stable/installation-guide.html]
+* Guia de Instalacion: [aqui](https://jupyterhub.readthedocs.io/en/stable/installation-guide.html)
+* Guia de Instalacion en tu propio servidor: [aqui](https://tljh.jupyter.org/en/latest/install/custom-server.html)
 
-* Guia de Instalacion en tu propio servidor: (aqui)[https://tljh.jupyter.org/en/latest/install/custom-server.html]
+* Matar proceso en un puerto especifico: [aqui](https://www.enmimaquinafunciona.com/pregunta/86326/linux-matar-proceso-en-un-puerto-especifico)
 
-* Matar proceso en un puerto especifico: (aqui)[https://www.enmimaquinafunciona.com/pregunta/86326/linux-matar-proceso-en-un-puerto-especifico]
+* Configurar Firewall: [aqui](https://computernewage.com/2014/08/10/como-configurar-el-firewall-ufw-en-ubuntu/)
 
-* Configurar Firewall: (aqui) [https://computernewage.com/2014/08/10/como-configurar-el-firewall-ufw-en-ubuntu/]
-
-* Install in custom server: (aqui)[https://tljh.jupyter.org/en/latest/install/custom-server.html]
+* Install in custom server: [aqui](https://tljh.jupyter.org/en/latest/install/custom-server.html)
 
 * Conocer la ip de tu servidor: `$ curl ifconfig.me/all`
 
-* Añadir a URL to run HupyterHub por https: (aqui)[https://tljh.jupyter.org/en/latest/howto/admin/https.html#howto-admin-https]
+* Añadir a URL to run HupyterHub por https: [aqui](https://tljh.jupyter.org/en/latest/howto/admin/https.html#howto-admin-https)
 
-* Si no carga en web (aqui) [https://github.com/jupyterhub/the-littlest-jupyterhub/issues/438>]
+* Si no carga en web [aqui](https://github.com/jupyterhub/the-littlest-jupyterhub/issues/438)
 
-* Habilitar las extensiones: (aqui)[https://tljh.jupyter.org/en/latest/howto/admin/enable-extensions.html]
+* Habilitar las extensiones: [aqui](https://tljh.jupyter.org/en/latest/howto/admin/enable-extensions.html)
 
-* Customizar el tema en jupyter notebooks: (aqui)[https://towardsdatascience.com/customize-your-jupyter-notebook-theme-in-2-lines-of-code-fc726cea1513#:~:text=By%20default%2C%20Jupyter%20Notebook%20uses,the%20theme%20of%20the%20notebook].
+* Customizar el tema en jupyter notebooks: [aqui](https://towardsdatascience.com/customize-your-jupyter-notebook-theme-in-2-lines-of-code-fc726cea1513#:~:text=By%20default%2C%20Jupyter%20Notebook%20uses,the%20theme%20of%20the%20notebook).
 
-* Compartir archivos para todos los usuarios: (aqui) [https://jupyterhub.github.io/nbgitpuller/link]
+* Compartir archivos para todos los usuarios: [aqui](https://jupyterhub.github.io/nbgitpuller/link)
 
-* Extension para Chrome de nbgitpuller: (aqui)[https://github.com/yuvipanda/nbgitpuller-link-generator-webextension#on-google-chrome--chromium]
+* Extension para Chrome de nbgitpuller: [aqui](https://github.com/yuvipanda/nbgitpuller-link-generator-webextension#on-google-chrome--chromium)
