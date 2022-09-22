@@ -50,13 +50,13 @@ Podemos dividir la Instalacion en Diferentes Pasos:
 
   `$ ssh-keygen -t rsa`
 
-![generar clave ssh](source\generar_clave_ssh.png)
+![generar clave ssh](https://github.com/enzzo19/Instalar-JupyterHub/blob/master/source/generar_clave_ssh.png)
 
 * Ahora deberemos ponerla en un formato para que podamos añadirla a nuestro VPS con el comando:
 
   `$ cat ~/.ssh/id_rsa.pub`
 
-![ver clave ssh](source\ver_clave_ssh.png)
+![ver clave ssh](source/ver_clave_ssh.png)
 
 * Ahora solo copiaremos lo que nos entrego ese comando y lo pegaremos en el panel de gestion de claves ssh VPS de Hostinger.
 * Primero haciendo click en el boton:
