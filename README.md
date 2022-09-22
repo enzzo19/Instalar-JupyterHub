@@ -85,3 +85,119 @@ Podemos dividir la Instalacion en Diferentes Pasos:
 
 ![add clave ssh new usser](source\agregar_clave_ssh_new_usser.png)
 
+* Mos pedira la contraseña que elegimos para este nuevo usuario.
+
+* Ahora podemos volver a conectarnos a nuestro usuario root para darle permiso de administrador a este nuevo usuario que acabamos de crear.
+
+* Para eso desde el root de nuestro VPS vamos a correr el comando:
+
+   `$ usermod <tu-nombre-usuario_nuevo> -G sudo`
+
+* Para comprobar que este nuevo usuario tiene permisos de administrador puede probar el comando:
+  
+   `$ su <tu-nombre-usuario_nuevo>`
+
+* Y luego dentro de este nuevo usuario corre el comando:
+
+   `$ sudo ls /`
+
+* Solo deberia pedir la contraseña de este nuevo usuario y mostrar la estructura de directorios.
+
+![new usser as sudo](source\new_usser_as_sudo.png)
+
+* Salir de ese superusuario y regresar a root: `$ exit`
+
+6. Ahora vamos a bloquear el acceso root y el acceso por contraseña a nuestro VPS. [Tutorial de VIM](https://victorhckinthefreeworld.com/2017/06/14/como-salir-del-editor-vim/)
+
+* Desde el usuario root vamos a buscar el archivo para editar los permisos con el comando:
+
+   `$ vim /etc/ssh/sshd_config`
+
+* Y aqui especificamente buscaremos las opciones:
+  * Para no permitir el acceso root:
+    * `PermitRootLoogin <no>` (cambiar)
+  * Para no permitir el acceso por contraseña
+    * `PasswordAuthetication <no>` (cambiar)
+
+* Desde Vim para:
+  * Entrar en modo edicion presionamos `i`
+  * Guardar un cambio `:w`
+  * Salir del editor `:q`
+
+* Para guardar los cambios en el sistema:
+  * `$ systemctl restart ssh`
+
+* Para salir del usuario root:
+  * `$ logout`
+
+* En este punto no deberias poder acceder como usuario root ni tampoco acceder a otro usuario con contraseña  a tu sevidor como se ve en la imagen.
+
+![security access](source\security_acces.png)
+
+* Entonces ya dejamos un VPS con las configuraciones MINIMAS de seguridad y vamos a acceder a el a travez del comando: 
+   `$ ssh <tu_nombre_usuario_nuevo>@<tu_ip_server>`
+
+### 2. Instalar las Herramientas
+
+* Ahora que nuestro VPS tiene las configuraciones MINIMAS de seguridad vamos a empezar a instalar ahora si The Littlest Jupyter Hub dentro de el.
+
+1. Primero en tu navegador vas a copiar la direccion IP de tu VPS y ver el contenido que esta te entrega:
+
+* Aqui pueden pasar 2 cosas:
+  * 1. El puerto esta liberado y la pagina no tiene ningun contenido, ni siquiera accede (Esto seria bueno y te llevaria directamente al paso 2).
+  * 2. El puerto esta ocupado con un proceso y se debe matar el proceso antes de continuar.
+
+* Desde Hostinger sucede lo segundo ya que si colocamos la direccion ip en nuestro navegador obtenemos:
+
+![kill port vps](source\kill_port_vps.png)
+
+* Entonces vamos a encontrar y matar el proceso para liberar el puerto que necesitamos
+
+* Primero vamos a listar los puertos con el comando:
+  * `$ sudo netstat -tupln`
+  
+![find port and proccess](source\find_port_and_procces.png)
+
+* Aqui buscar el puerto 80 y el numero de PID que tiene luego matarlo con:
+  * `$ sudo kill -<numero-PID-proceso> PID`
+
+* Ahora una vez que matamos el proceso corriendo en ese puerto al acceder a la ip desde nuestro navegador deberiamos ver algo como:
+  
+![content page after kill](source\content_page_after_kill.png)
+
+* Y asi exactamente es como la necesitabamos.
+
+2. Probar de levantar un servidor
+
+* Si estas en este punto puede probar de crer un archivo con:
+  
+  * `$ touch HOLA`
+  * `$ ls`
+
+* Intenta levantar un servidor de python el puerto 80 (puerto por defecto para protocolo http):
+  
+  * `$ sudo python3 - m http.server 80`
+
+![step to make python server](source\step_to_make_python_server.png)
+
+* Una vez realizados estos pasos podemos volver a acceder a nuestra ip desde el navegador y veremos algo como:
+
+![content of python server](source\content_python_server.png)
+
+* Para detenerlo simplemente apretar laconvinacion de teclas `CTRL + C` en la consola donde se estaba corriendo.
+
+3. Ahora vamos a instalar TLJH siguiendo la [guia](https://tljh.jupyter.org/en/latest/install/custom-server.html)
+
+* Asegúrese de tener `python3` y `python3-dev`instalados. `curl` `git`:
+
+  * `$ sudo apt install python3 python3-dev git curl`
+
+![install package](source\install_package.png)
+
+* Copie el texto a continuación y péguelo en la terminal. Reemplace `<admin-user-name>` con el nombre del primer usuario administrador de este JupyterHub. Elija el nombre que desee (¡no olvide quitar los corchetes!).
+  `$ curl -L https://tljh.jupyter.org/bootstrap.py | sudo -E python3 - --admin <admin-user-name>`
+* Este usuario administrador puede iniciar sesión después de configurar JupyterHub y puede configurarlo según sus necesidades.
+* ¡Recuerda agregar tu nombre de usuario !
+* Esto puede tardar un poco dependiendo de tu coneccion de red.
+
+![install tljh](source\install_tljh.png)
