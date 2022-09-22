@@ -201,3 +201,40 @@ Podemos dividir la Instalacion en Diferentes Pasos:
 * Esto puede tardar un poco dependiendo de tu coneccion de red.
 
 ![install tljh](source\install_tljh.png)
+
+* Copie la IP pública de su servidor e intente acceder `http://<public-ip>` desde su navegador. Si todo salió bien, esto debería darle una página de inicio de sesión de JupyterHub.
+
+![content tljh web](source\content_tljh_web.png)
+
+* Inicie sesión con el nombre de usuario administrador que utilizó en el paso anterior. Puede elegir cualquier contraseña que desee. Use una contraseña segura y anótela en algún lugar, ya que esta será la contraseña para la cuenta de usuario administrador a partir de ahora.
+
+* ¡Felicitaciones, tiene un JupyterHub en funcionamiento!
+
+### 3_Habilitar HTTPS y apuntar a nuestro Dominio
+
+1. Primero Vamos a conseguir un dominio para apuntarlo a nuestro servidor, esto tambien lo puden hacer desde Hostinger en [dominio](https://www.hostinger.com.ar/registrar-dominio).
+
+![apuntar dominio](source\apuntar_dominio.png)
+
+* Donde esta tapado por rojo va nuestra direccion ip.
+
+2. Ahora siguiendo el [tutorial](https://tljh.jupyter.org/en/latest/howto/admin/https.html#howto-admin-https) vamos a habilitar HTTPS y apuntar tljh a nuestro dominio.
+
+* Para habilitar HTTPS a través de letsencrypt:
+  * `$ sudo tljh-config set https.enabled true`
+  * `$ sudo tljh-config set https.letsencrypt.email you@example.com`
+  * `$ sudo tljh-config add-item https.letsencrypt.domains yourhub.yourdomain.edu`
+  
+  * Donde `you@example.com` está su dirección de correo electrónico y `yourhub.yourdomain.edu` es el dominio donde se ejecutará su Hub.
+
+![apuntar hub dominio](source\apuntar_hub_dominio.png)
+
+* Finalmente, puede volver a cargar el proxy para cargar la nueva configuración con el comando: 
+
+   `$ sudo tljh-config reload proxy`
+
+![reload_proxy](source\reload_proxy.png)
+
+* En este punto, el proxy debe negociar con Let's Encrypt para configurar un certificado HTTPS de confianza para usted. El proxy puede tardar un momento en negociar con Let's Encrypt para obtener sus certificados, después de lo cual puede acceder a su Hub de forma segura en `<https://yourhub.yourdomain.edu>`.
+
+* Estos certificados tienen una validez de 3 meses. El proxy los renovará automáticamente antes de que caduquen.
