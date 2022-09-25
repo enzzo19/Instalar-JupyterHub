@@ -239,6 +239,12 @@ Podemos dividir la Instalacion de TLJH en estos Pasos:
 
 * ¡Felicitaciones, tiene un JupyterHub en funcionamiento!
 
+* Ver los logs de traefik y de jupyterhub es util cuando algo no salio bien al finalizar la instalacion, puedes hacerlo con el siguiente comando:
+
+   `$ sudo journalctl -u traefik`
+
+   `$ sudo journalctl -u jupyterhub`
+
 ## 3. Habilitar HTTPS y apuntar a nuestro Dominio
 
 1. Primero Vamos a conseguir un dominio para apuntarlo a nuestro servidor, esto tambien lo puden hacer desde Hostinger desde [aqui](https://www.hostinger.com.ar/registrar-dominio).
@@ -349,11 +355,6 @@ Link para el [DESAFIO](https://tljupyterar.enzzoservertest.online/hub/user-redir
 
 * Matar proceso en un puerto especifico: [aqui](https://www.enmimaquinafunciona.com/pregunta/86326/linux-matar-proceso-en-un-puerto-especifico)
 
-* Configurar Firewall: [aqui](https://computernewage.com/2014/08/10/como-configurar-el-firewall-ufw-en-ubuntu/)
-
-
-* Conocer la ip de tu servidor: `$ curl ifconfig.me/all`
-
 * Añadir a URL to run HupyterHub por https: [aqui](https://tljh.jupyter.org/en/latest/howto/admin/https.html#howto-admin-https)
 
 * Si no carga en web [aqui](https://github.com/jupyterhub/the-littlest-jupyterhub/issues/438)
@@ -366,6 +367,40 @@ Link para el [DESAFIO](https://tljupyterar.enzzoservertest.online/hub/user-redir
 
 * Extension para Chrome de nbgitpuller: [aqui](https://github.com/yuvipanda/nbgitpuller-link-generator-webextension#on-google-chrome--chromium)
 
+## Comandos Utiles
+
+* Redirigir el trafico del puerto 80 a uno habilitado por nosotros como el 8080:
+
+   `$ sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080`
+
+* Conocer la ip de tu servidor:
+
+   `$ curl ifconfig.me/all`
+
+* Si no nos deja Instalar las librerias puede ser que cortamos el servicio http el cual es util para la instalacion de librerias entonces:
+
+  * Instalamos un configurador de Firewall
+
+      `$ sudo apt install ufw`
+
+  * Luego vamos a ver el estado:
+
+      `$ sudo ufw status`
+
+  * Si esta deshabilitado lo cambiamos con:
+
+      `$ sudo ufw enable`
+
+  * Luego habilitamos la conexion http:
+
+    `$ sudo uf allow http`
+
+  * Finalmente desactiva el acceso al Firewall ya que esto bloquea el acceso ssh:
+
+    `$ sudo ufw disable`
+
+  * Ayuda para [Configurar Firewall](https://computernewage.com/2014/08/10/como-configurar-el-firewall-ufw-en-ubuntu/)
+
 ## Contactos
 
 * Grupo en Telegram de [Python Norte](https://t.me/pythonnorte)
@@ -374,4 +409,4 @@ Link para el [DESAFIO](https://tljupyterar.enzzoservertest.online/hub/user-redir
 
 * Mi correo [enzzo.juarez.19@gmail.com](enzzo.juarez.19@gmail.com)
 
-* Si tienes cualquier duda o alguna sugerencia que suelen ser muy utiles puedes enviarme un mensaje a mi o en la comunidad para que podamos seguir haciendo crecer esto.
+* Si tienes cualquier duda o alguna sugerencia que suelen ser muy utiles y me ayudan mucho a seguir aprendiendo puedes enviarme un mensaje a mi o en la comunidad para que podamos seguir haciendo crecer esto.
