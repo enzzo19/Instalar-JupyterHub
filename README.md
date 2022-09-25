@@ -5,7 +5,7 @@
 
 En este tuorial vamos a ver como instalar  The Littlest JupyterHub en un VPS las herramientas que utilizaremos seran:
 
-* Distro de Ubuntu 20.04 LTS instalada en Windows con WSL. [Ver](https://learn.microsoft.com/es-es/windows/wsl/install). Como alternativa a esto puedes utilizar [Putty](https://www.hostinger.es/tutoriales/conectar-usando-terminal-putty-ssh/) desde Windows.
+* Distro de Ubuntu 20.04 LTS instalada en Windows con WSL. Puedes encontrar ayuda desde [aqui](https://learn.microsoft.com/es-es/windows/wsl/install). Como alternativa a esto puedes utilizar [Putty](https://www.hostinger.es/tutoriales/conectar-usando-terminal-putty-ssh/) desde Windows.
 
 * Un VPS (Servidor Privado Virtual) contratado de Hostinger con las siguientes caracteristicas:
 
