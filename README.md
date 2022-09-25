@@ -176,6 +176,7 @@ Podemos dividir la Instalacion de TLJH en estos Pasos:
 * Entonces vamos a encontrar y matar el proceso para liberar el puerto que necesitamos
 
 * Primero vamos a listar los puertos con el comando:
+
    `$ sudo netstat -tupln`
   
    ![find port and proccess](source/find_port_and_procces.png)
@@ -190,7 +191,7 @@ Podemos dividir la Instalacion de TLJH en estos Pasos:
 
 * Y asi exactamente es como la necesitabamos.
 
-2. Probar de levantar un servidor
+1. Probar de levantar un servidor
 
 * Si estas en este punto puede probar de crear un archivo con:
   
